@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/library-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #main-static-resources},
+                                                ~{:: #main-header},
+                                                ~{:: #main-nav},
+                                                ~{:: #main-main-content},
+                                                ~{:: #main-footer}
+                                               )}">
+<head>
+    <meta charset="UTF-8">
+    <title>Knižnica</title>
+    <th:block id="main-static-resources">
+    </th:block>
+</head>
+
+<body>
+<div id="main-nav" th:replace="~{/fragments/library-fragments :: library-menu}">
+    Menu
+</div>
+
+<div id="main-header">
+
+</div>
+
+<div id="main-main-content">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Java BootStrap Thymeleaf knižnica</h1>
+            <p class="lead">Aplikácia pre správu virtuálnej knižnice. Ovládanie aplikácie je cez menu, ktoré sa zobrazuje vo vrchnej časti stránky.
+                Aplikácia ukladá informácie do databázy SQL.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<div id="main-footer" th:replace="~{/fragments/library-fragments :: copyright}">
+    Footer
+</div>
+</body>
+</html>

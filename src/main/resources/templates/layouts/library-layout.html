@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="sk" xmlns:th="http://www.thymeleaf.org"
+      th:fragment="main-fragment (title, resources, header, nav, libraryContent, footer)">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title th:replace="${title}">Page 1 Title</title>
+    <link href="webjars/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link th:href="@{/css/library.css}" rel="stylesheet"/>-->
+    <th:block th:replace="${resources} ?: ~{}"></th:block>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+<div class="bg-image"
+     style="background-image: url('/library_background.jpg'); width: 100vw; height: 100vh;">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.8); width: 100vw; height: 100vh;">
+        <div class="container text-white">
+            <div th:insert="${nav} ?: ~{}">
+                Menu
+            </div>
+
+            <h3 class="h-2 p-2 mb-1 mt-1 text-center bg-dark bg-opacity-50 rounded"
+                th:insert="${header} ?: ~{}">
+                Page 1
+            </h3>
+            <section>
+                <article th:insert="${libraryContent} ?: ~{}">
+                    <h1>Page 1</h1>
+                    <p>Main content of Page 1</p>
+                </article>
+            </section>
+        </div>
+
+        <footer class="bg-dark bg-opacity-50 text-center fixed-bottom text-white" th:insert="${footer} ?: ~{}">
+            <p>Footer</p>
+        </footer>
+    </div>
+    <script src="webjars/jquery/3.6.4/jquery.min.js"></script>
+    <script src="webjars/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+</div>
+</body>
+</html>

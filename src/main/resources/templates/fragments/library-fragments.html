@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="sk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Library Fragments</title>
+</head>
+<body>
+<div class="pt-2" th:fragment="library-menu">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient rounded">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Knižnica</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/}">Úvodná stránka</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/all-books}">Knihy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/all-authors}">Autori</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="copyright">
+    &copy; 2023 Ján Kavan
+</div>
+</body>
+</html>

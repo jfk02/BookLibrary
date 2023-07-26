@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/library-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #authors-static-resources},
+                                                ~{:: #authors-header},
+                                                ~{:: #authors-nav},
+                                                ~{:: #authors-main-content},
+                                                ~{:: #authors-footer}
+                                               )}">
+<head>
+    <meta charset="UTF-8">
+    <title>Zoznam autorov kníh</title>
+    <th:block id="authors-static-resources">
+    </th:block>
+</head>
+
+<body>
+<div id="authors-nav" th:replace="~{/fragments/library-fragments :: library-menu}">
+    Menu
+</div>
+
+<div id="authors-header">
+    Zoznam autorov kníh
+</div>
+
+<div id="authors-main-content">
+    <div class="p-2 bg-dark bg-opacity-50 rounded">
+        <div class="table-responsive">
+            <table class="table table-sm table-bordered table-striped table-hover table-dark bg-opacity-50 mb-0">
+                <thead class="text-center">
+                <tr>
+                    <th>Meno autora</th>
+                    <th>Úprava záznamu</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="author : ${authors}">
+                    <td class="text-center"
+                        th:text="${author.name}"></td>
+                    <td class="text-center">
+                        <a class="btn btn-primary">
+                            Upraviť
+                        </a>
+                        <a class="btn btn-danger"
+                           th:href="@{/deleteAuthorWithId/{id}(id=${author.id})}">
+                            Vymazať
+                        </a>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="authors-footer" th:replace="~{/fragments/library-fragments :: copyright}">
+    Footer
+</div>
+
+</body>
+</html>
