@@ -6,9 +6,9 @@
 </head>
 <body>
 <div class="pt-2" th:fragment="library-menu">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient rounded">
+    <nav class="navbar navbar-expand-lg bg-dark bg-gradient rounded">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Knižnica</a>
+            <a class="navbar-brand" href="#">Menu</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -19,9 +19,17 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" th:href="@{/}">Úvodná stránka</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/all-books}">Knihy</a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Knihy
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/all-books}">Zoznam kníh</a></li>
+                            <li><a class="dropdown-item" th:href="@{/add-book}">Pridaj novú knihu</a></li>
+                        </ul>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" th:href="@{/all-authors}">Autori</a>
                     </li>

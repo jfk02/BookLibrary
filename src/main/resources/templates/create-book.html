@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/library-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #newbook-static-resources},
+                                                ~{:: #newbook-header},
+                                                ~{:: #newbook-nav},
+                                                ~{:: #newbook-main-content},
+                                                ~{:: #newbook-footer}
+                                               )}">
+<head>
+    <meta charset="UTF-8">
+    <title>Pridaj knihu</title>
+    <th:block id="newbook-static-resources">
+    </th:block>
+</head>
+
+<body>
+<div id="newbook-nav" th:replace="~{/fragments/library-fragments :: library-menu}">
+    Menu
+</div>
+
+<div id="newbook-header">
+    Nová kniha
+</div>
+
+<div id="newbook-main-content">
+    <div class="p-2 bg-dark bg-opacity-50 rounded">
+        <form action="#"
+              th:action="@{/new-book}"
+              th:object="${bookDto}"
+              method="post">
+            <div class="mb-3">
+                <label for="inputBookTitle" class="form-label">Názov</label>
+                <input type="text" th:field="*{title}" class="form-control" id="inputBookTitle">
+            </div>
+
+            <div class="col-md-3">
+                <label for="validationAuthor" class="form-label">Autor</label>
+                <select class="form-select"
+                        required
+                        th:field="*{authorDto}"
+                        id="validationAuthor">
+                    <option selected disabled value="">Vyber autora...</option>
+                    <option
+                            th:each="author : ${authors}"
+                            th:text="${author.name}"
+                            th:value="${author}"
+                    ></option>
+                </select>
+                <div class="invalid-feedback">Vyber autora pre novú knihu</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="inputPages" class="form-label">Počet strán</label>
+                <input type="text" th:field="*{pages}" class="form-control" id="inputPages">
+            </div>
+
+            <div class="mb-3">
+                <label for="inputYear" class="form-label">Rok vydania</label>
+                <input type="number" th:field="*{publishedYear}" class="form-control" id="inputYear">
+            </div>
+
+            <div class="mb-3">
+                <label for="inputIsbn" class="form-label">ISBN</label>
+                <input type="number" th:field="*{isbn}" class="form-control" id="inputIsbn">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Ulož knihu</button>
+        </form>
+    </div>
+</div>
+
+<div id="newbook-footer" th:replace="~{/fragments/library-fragments :: copyright}">
+    Footer
+</div>
+</body>
+
+</html>

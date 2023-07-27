@@ -7,5 +7,6 @@ public record AuthorDto(
         Long id,
         @NotBlank(message = "Meno autora knihy je povinné.")
         @Size(min = 3, max = 50)
-        String name) {
+        String name,
+        Integer booksCount) {
 }

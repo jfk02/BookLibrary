@@ -27,10 +27,11 @@
 <div id="authors-main-content">
     <div class="p-2 bg-dark bg-opacity-50 rounded">
         <div class="table-responsive">
-            <table class="table table-sm table-bordered table-striped table-hover table-dark bg-opacity-50 mb-0">
+            <table class="table table-sm table-bordered table-striped table-hover mb-0">
                 <thead class="text-center">
                 <tr>
                     <th>Meno autora</th>
+                    <th>Počet kníh v knižnici</th>
                     <th>Úprava záznamu</th>
                 </tr>
                 </thead>
@@ -39,6 +40,8 @@
                 <tr th:each="author : ${authors}">
                     <td class="text-center"
                         th:text="${author.name}"></td>
+                    <td class="text-center"
+                        th:text="${author.booksCount}"></td>
                     <td class="text-center">
                         <a class="btn btn-primary">
                             Upraviť
