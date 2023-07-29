@@ -40,9 +40,9 @@ public class BookController {
     }
 
     @PostMapping("/new-book")
-    public String newBook(@ModelAttribute("bookDto") NewBookDto bookDto) {
-        //bookService.createBook(bookDto);
-        return "redirect:/all-books";
+    public String newBook(@ModelAttribute("bookDto") NewBookDto newBookDto) {
+        bookService.createNewBook(newBookDto);
+        return "redirect:/add-book";
     }
 
     @GetMapping("/add-book")

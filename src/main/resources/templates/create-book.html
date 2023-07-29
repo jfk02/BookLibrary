@@ -35,17 +35,17 @@
                 <input type="text" th:field="*{title}" class="form-control" id="inputBookTitle">
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 mb-3">
                 <label for="validationAuthor" class="form-label">Autor</label>
                 <select class="form-select"
                         required
-                        th:field="*{authorDto}"
+                        th:field="*{authorId}"
                         id="validationAuthor">
-                    <option selected disabled value="">Vyber autora...</option>
+                    <option selected disabled value="">...</option>
                     <option
                             th:each="author : ${authors}"
                             th:text="${author.name}"
-                            th:value="${author}"
+                            th:value="${author.id}"
                     ></option>
                 </select>
                 <div class="invalid-feedback">Vyber autora pre novú knihu</div>
@@ -53,7 +53,7 @@
 
             <div class="mb-3">
                 <label for="inputPages" class="form-label">Počet strán</label>
-                <input type="text" th:field="*{pages}" class="form-control" id="inputPages">
+                <input type="number" th:field="*{pages}" class="form-control" id="inputPages">
             </div>
 
             <div class="mb-3">
@@ -66,7 +66,9 @@
                 <input type="number" th:field="*{isbn}" class="form-control" id="inputIsbn">
             </div>
 
-            <button type="submit" class="btn btn-primary">Ulož knihu</button>
+            <div class="text-center mb-3">
+                <button type="submit" class="btn btn-primary">Ulož knihu</button>
+            </div>
         </form>
     </div>
 </div>

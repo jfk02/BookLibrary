@@ -6,12 +6,14 @@ import sk.javakurz.library.dto.AuthorDto;
 import sk.javakurz.library.entity.Author;
 
 import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface AuthorMapper {
 
     AuthorDto authorToAuthorDto(Author author);
 
     List<AuthorDto> authorToAuthorDto(Iterable<Author> author);
+
 
     @Mapping(target = "booksCount", ignore = true)
     Author authorDtoToAuthor(AuthorDto authorDto);

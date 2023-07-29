@@ -9,5 +9,7 @@ public interface AuthorService {
 
     List<AuthorDto> getAllAuthors();
 
+    AuthorDto findAuthorById(Long authorId);
+
     void deleteAuthorWithId(Long id);
 }

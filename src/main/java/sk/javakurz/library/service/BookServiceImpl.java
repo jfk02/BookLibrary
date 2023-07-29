@@ -3,6 +3,7 @@ package sk.javakurz.library.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import sk.javakurz.library.dto.BookDto;
+import sk.javakurz.library.dto.NewBookDto;
 import sk.javakurz.library.entity.Book;
 import sk.javakurz.library.mapper.BookMapper;
 import sk.javakurz.library.repository.BookRepository;
@@ -15,13 +16,7 @@ public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
-
-    @Override
-    public BookDto createBook(BookDto bookDto) {
-        Book book = bookMapper.bookDtoToBook(bookDto);
-        Book savedBook = bookRepository.save(book);
-        return bookMapper.bookToBookDto(savedBook);
-    }
+    private final AuthorService authorService;
 
     @Override
     public List<BookDto> getAllBooks() {
@@ -34,4 +29,10 @@ public class BookServiceImpl implements BookService {
         bookRepository.deleteById(bookId);
     }
 
+    @Override
+    public BookDto createNewBook(NewBookDto newBookDto) {
+        Book book = bookMapper.newBookDtoToBook(newBookDto, authorService);
+        Book savedBook = bookRepository.save(book);
+        return bookMapper.bookToBookDto(savedBook);
+    }
 }

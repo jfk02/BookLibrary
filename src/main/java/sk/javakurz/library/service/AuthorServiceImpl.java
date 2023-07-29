@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import sk.javakurz.library.dto.AuthorDto;
 import sk.javakurz.library.entity.Author;
+import sk.javakurz.library.exception.ResourceNotFoundException;
 import sk.javakurz.library.mapper.AuthorMapper;
 import sk.javakurz.library.repository.AuthorRepository;
 
@@ -27,6 +28,14 @@ public class AuthorServiceImpl  implements AuthorService {
     public List<AuthorDto> getAllAuthors() {
         var allAuthors = authorRepository.findAll();
         return authorMapper.authorToAuthorDto(allAuthors);
+    }
+
+    @Override
+    public AuthorDto findAuthorById(Long authorId) {
+        var author = authorRepository.findById(authorId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Autor s ID: " + authorId + " neexistuje!"));
+        return authorMapper.authorToAuthorDto(author);
     }
 
     @Override
