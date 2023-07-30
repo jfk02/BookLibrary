@@ -3,6 +3,7 @@ package sk.javakurz.library.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import sk.javakurz.library.dto.AuthorDto;
+import sk.javakurz.library.dto.NewAuthorDto;
 import sk.javakurz.library.entity.Author;
 
 import java.util.List;
@@ -14,9 +15,14 @@ public interface AuthorMapper {
 
     List<AuthorDto> authorToAuthorDto(Iterable<Author> author);
 
-
     @Mapping(target = "booksCount", ignore = true)
+    @Mapping(target = "books", ignore = true)
     Author authorDtoToAuthor(AuthorDto authorDto);
 
     List<Author> authorDtoToAuthor(Iterable<AuthorDto> authorDto);
+
+    @Mapping(target="id", ignore = true)
+    @Mapping(target="booksCount", ignore = true)
+    @Mapping(target="books", ignore = true)
+    Author newAuthorDtoToAuthor(NewAuthorDto newAuthorDto);
 }

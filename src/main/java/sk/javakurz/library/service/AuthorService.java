@@ -1,11 +1,12 @@
 package sk.javakurz.library.service;
 
 import sk.javakurz.library.dto.AuthorDto;
+import sk.javakurz.library.dto.NewAuthorDto;
 
 import java.util.List;
 
 public interface AuthorService {
-    AuthorDto createAuthor(AuthorDto authorDto);
+    AuthorDto createAuthor(NewAuthorDto newAuthorDto);
 
     List<AuthorDto> getAllAuthors();
 

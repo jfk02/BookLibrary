@@ -3,6 +3,7 @@ package sk.javakurz.library.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import sk.javakurz.library.dto.AuthorDto;
+import sk.javakurz.library.dto.NewAuthorDto;
 import sk.javakurz.library.entity.Author;
 import sk.javakurz.library.exception.ResourceNotFoundException;
 import sk.javakurz.library.mapper.AuthorMapper;
@@ -18,8 +19,8 @@ public class AuthorServiceImpl  implements AuthorService {
     private final AuthorMapper authorMapper;
 
     @Override
-    public AuthorDto createAuthor(AuthorDto authorDto) {
-        Author author = authorMapper.authorDtoToAuthor(authorDto);
+    public AuthorDto createAuthor(NewAuthorDto newAuthorDto) {
+        Author author = authorMapper.newAuthorDtoToAuthor(newAuthorDto);
         Author savedAuthor = authorRepository.save(author);
         return authorMapper.authorToAuthorDto(savedAuthor);
     }

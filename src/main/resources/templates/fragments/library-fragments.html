@@ -30,8 +30,14 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/all-authors}">Autori</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Autori
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/all-authors}">Zoznam autorov</a></li>
+                            <li><a class="dropdown-item" th:href="@{/add-author}">Pridaj autora</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

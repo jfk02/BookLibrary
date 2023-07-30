@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/library-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #static-resources-content},
+                                                ~{:: #header-content},
+                                                ~{:: #nav-content},
+                                                ~{:: #main-content},
+                                                ~{:: #footer-content}
+                                               )}">
+<head>
+    <meta charset="UTF-8">
+    <title>Pridaj autora</title>
+    <th:block id="static-resources-content">
+    </th:block>
+</head>
+
+<body>
+<div id="nav-content" th:replace="~{/fragments/library-fragments :: library-menu}">
+    Menu
+</div>
+
+<div id="header-content">
+    Nový autor
+</div>
+
+<div id="main-content">
+    <div class="p-2 bg-dark bg-opacity-50 rounded">
+        <form action="#"
+              th:action="@{/new-author}"
+              th:object="${authorDto}"
+              method="post">
+            <div class="mb-3">
+                <label for="inputBookTitle" class="form-label">Meno autora</label>
+                <input type="text" th:field="*{name}" class="form-control" id="inputBookTitle">
+            </div>
+            <div class="text-center mb-3">
+                <button type="submit" class="btn btn-primary">Ulož autora</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="footer-content" th:replace="~{/fragments/library-fragments :: copyright}">
+    Footer
+</div>
+</body>
+
+</html>

@@ -7,6 +7,8 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class NewBookDto {
     @NotBlank(message = "Názov knihy je povinný.")
     @Size(min = 3, max = 50)
