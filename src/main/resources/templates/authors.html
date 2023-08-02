@@ -43,7 +43,8 @@
                     <td class="text-center"
                         th:text="${author.booksCount}"></td>
                     <td class="text-center">
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary"
+                            th:href="@{/update-author/{id}(id=${author.id})}">
                             Upraviť
                         </a>
                         <a class="btn btn-danger"

@@ -10,7 +10,7 @@
                                                )}">
 <head>
     <meta charset="UTF-8">
-    <title>Pridaj autora</title>
+    <title>Autor</title>
     <th:block id="static-resources-content">
     </th:block>
 </head>
@@ -21,15 +21,16 @@
 </div>
 
 <div id="header-content">
-    Nový autor
+    Autor
 </div>
 
 <div id="main-content">
     <div class="p-2 bg-dark bg-opacity-50 rounded">
         <form action="#"
-              th:action="@{/new-author}"
+              th:action="@{/author-input-data}"
               th:object="${authorDto}"
               method="post">
+            <input th:field="*{id}" type="hidden"/>
             <div class="mb-3">
                 <label for="inputBookTitle" class="form-label">Meno autora</label>
                 <input type="text" th:field="*{name}" class="form-control" id="inputBookTitle">

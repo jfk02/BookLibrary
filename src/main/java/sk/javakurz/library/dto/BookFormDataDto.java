@@ -9,7 +9,9 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class NewBookDto {
+public class BookFormDataDto {
+    public Long id;
+
     @NotBlank(message = "Názov knihy je povinný.")
     @Size(min = 3, max = 50)
     private String title;

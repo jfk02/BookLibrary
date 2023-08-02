@@ -1,38 +1,41 @@
 package sk.javakurz.library.mapper;
 
-import org.mapstruct.Context;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 import sk.javakurz.library.dto.AuthorDto;
 import sk.javakurz.library.dto.BookDto;
-import sk.javakurz.library.dto.NewBookDto;
+import sk.javakurz.library.dto.BookFormDataDto;
 import sk.javakurz.library.entity.Book;
 import sk.javakurz.library.service.AuthorService;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {AuthorMapper.class})
-public interface BookMapper {
+public abstract class BookMapper {
 
     @Mapping(target = "authorDto", source = "author")
-    BookDto bookToBookDto(Book book);
+    public abstract BookDto bookToBookDto(Book book);
 
-    List<BookDto> bookToBookDto(Iterable<Book> book);
+    public abstract List<BookDto> bookToBookDto(Iterable<Book> book);
 
     @Mapping(target = "author", source = "authorDto")
     @Mapping(target="checkouts", ignore = true)
-    Book bookDtoToBook(BookDto bookDto);
-
-    List<Book> bookDtoToBook(Iterable<BookDto> bookDto);
+    public abstract Book bookDtoToBook(BookDto bookDto);
 
     @Mapping(target = "author", source = "authorId", qualifiedByName = "authorIdToAuthor")
     @Mapping(target="checkouts", ignore = true)
     @Mapping(target="id", ignore = true)
-    Book newBookDtoToBook(NewBookDto bookDto, @Context AuthorService authorService);
+    public abstract Book newBookDtoToBook(BookFormDataDto bookDto, @Context AuthorService authorService);
+
+    @Mapping(target = "authorId", ignore = true)
+    public abstract BookFormDataDto bookToFormBookDto(Book book);
+
+    @Mapping(target="id", ignore = true)
+    @Mapping(target="checkouts", ignore = true)
+    @Mapping(target = "author", source = "authorId", qualifiedByName = "authorIdToAuthor")
+    public abstract void updateBookFromFormBookDto(@MappingTarget Book book, BookFormDataDto bookFormDataDto, @Context AuthorService authorService);
 
     @Named("authorIdToAuthor")
-    default AuthorDto mapAuthorIdToAuthor(Long authorId, @Context AuthorService authorService) {
+    public AuthorDto mapAuthorIdToAuthor(Long authorId, @Context AuthorService authorService) {
         return authorService.findAuthorById(authorId);
     }
 }

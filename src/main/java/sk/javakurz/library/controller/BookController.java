@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
-import sk.javakurz.library.dto.BookDto;
-import sk.javakurz.library.dto.NewBookDto;
+import sk.javakurz.library.dto.BookFormDataDto;
 import sk.javakurz.library.service.AuthorService;
 import sk.javakurz.library.service.BookService;
 
@@ -40,15 +38,17 @@ public class BookController {
     }
 
     @PostMapping("/new-book")
-    public String newBook(@ModelAttribute("bookDto") NewBookDto newBookDto) {
-        bookService.createNewBook(newBookDto);
+    public String newBook(@ModelAttribute("bookDto") BookFormDataDto bookFormDataDto) {
+        bookService.createNewBook(bookFormDataDto);
         return "redirect:/add-book";
     }
 
     @GetMapping("/add-book")
     public String addBook(Model model) {
         model.addAttribute("authors", authorService.getAllAuthors());
-        model.addAttribute("bookDto", new NewBookDto());
+        var bookFormDataDto = new BookFormDataDto();
+        bookFormDataDto.setId((long) -1);
+        model.addAttribute("bookDto", bookFormDataDto);
         return "create-book";
     }
 }

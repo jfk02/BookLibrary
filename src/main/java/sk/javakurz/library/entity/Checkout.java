@@ -22,7 +22,9 @@ public class Checkout {
     @NotNull
     @FutureOrPresent(message="Dátum výpožičky nemôže byť v minulosti.")
     private Date startDate;
+
     private Date endDate;
+
     private boolean isReturned;
 
     @ManyToOne

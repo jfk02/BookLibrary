@@ -3,7 +3,7 @@ package sk.javakurz.library.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import sk.javakurz.library.dto.AuthorDto;
-import sk.javakurz.library.dto.NewAuthorDto;
+import sk.javakurz.library.dto.AuthorFormDataDto;
 import sk.javakurz.library.entity.Author;
 import sk.javakurz.library.exception.ResourceNotFoundException;
 import sk.javakurz.library.mapper.AuthorMapper;
@@ -13,14 +13,14 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
-public class AuthorServiceImpl  implements AuthorService {
+public class AuthorServiceImpl implements AuthorService {
 
     private final AuthorRepository authorRepository;
     private final AuthorMapper authorMapper;
 
     @Override
-    public AuthorDto createAuthor(NewAuthorDto newAuthorDto) {
-        Author author = authorMapper.newAuthorDtoToAuthor(newAuthorDto);
+    public AuthorDto createAuthor(AuthorFormDataDto authorFormDataDto) {
+        Author author = authorMapper.newAuthorDtoToAuthor(authorFormDataDto);
         Author savedAuthor = authorRepository.save(author);
         return authorMapper.authorToAuthorDto(savedAuthor);
     }
@@ -37,6 +37,16 @@ public class AuthorServiceImpl  implements AuthorService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Autor s ID: " + authorId + " neexistuje!"));
         return authorMapper.authorToAuthorDto(author);
+    }
+
+    @Override
+    public AuthorDto updateAuthor(AuthorFormDataDto updatedAuthor) {
+        var author = authorRepository.findById(updatedAuthor.getId())
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Autor s ID: " + updatedAuthor.getId() + " neexistuje!"));
+        authorMapper.updateAuthorFromFormAuthorDto(author, updatedAuthor);
+        Author savedAuthor = authorRepository.save(author);
+        return authorMapper.authorToAuthorDto(savedAuthor);
     }
 
     @Override

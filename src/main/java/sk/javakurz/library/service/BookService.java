@@ -1,7 +1,7 @@
 package sk.javakurz.library.service;
 
 import sk.javakurz.library.dto.BookDto;
-import sk.javakurz.library.dto.NewBookDto;
+import sk.javakurz.library.dto.BookFormDataDto;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public interface BookService {
 
     void deleteBookWithId(Long id);
 
-    BookDto createNewBook(NewBookDto newBookDto);
+    BookDto createNewBook(BookFormDataDto bookFormDataDto);
 
     //  BookDto createNewBook(NewBookDto newBookDto);
 }

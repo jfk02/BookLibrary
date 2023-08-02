@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class NewAuthorDto {
+public class AuthorFormDataDto {
+    private Long id;
+
     @NotBlank(message = "Meno autora je povinný údaj.")
     @Size(min = 3, max = 50)
-    public String name;
-}
+    private String name;
+};
