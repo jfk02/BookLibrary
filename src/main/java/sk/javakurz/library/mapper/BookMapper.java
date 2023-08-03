@@ -26,7 +26,7 @@ public abstract class BookMapper {
     @Mapping(target="id", ignore = true)
     public abstract Book newBookDtoToBook(BookFormDataDto bookDto, @Context AuthorService authorService);
 
-    @Mapping(target = "authorId", ignore = true)
+    @Mapping(target = "authorId", source = "author.id")
     public abstract BookFormDataDto bookToFormBookDto(Book book);
 
     @Mapping(target="id", ignore = true)

@@ -27,9 +27,10 @@
 <div id="newbook-main-content">
     <div class="p-2 bg-dark bg-opacity-50 rounded">
         <form action="#"
-              th:action="@{/new-book}"
+              th:action="@{/book-input-data}"
               th:object="${bookDto}"
               method="post">
+            <input th:field="*{id}" type="hidden"/>
             <div class="mb-3">
                 <label for="inputBookTitle" class="form-label">Názov</label>
                 <input type="text" th:field="*{title}" class="form-control" id="inputBookTitle">

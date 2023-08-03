@@ -9,9 +9,11 @@ public interface BookService {
 
     List<BookDto> getAllBooks();
 
+    BookFormDataDto findBookByIdForForm(Long bookId);
+
+    BookDto updateBook(BookFormDataDto updatedBook);
+
     void deleteBookWithId(Long id);
 
-    BookDto createNewBook(BookFormDataDto bookFormDataDto);
-
-    //  BookDto createNewBook(NewBookDto newBookDto);
+    BookDto createBook(BookFormDataDto bookFormDataDto);
 }

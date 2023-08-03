@@ -47,7 +47,8 @@
                     <td class="text-center" th:text="${book.publishedYear}"></td>
                     <td class="text-center" th:text="${book.isbn}"></td>
                     <td class="text-center">
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary"
+                           th:href="@{/update-book/{id}(id=${book.id})}">
                             Upraviť
                         </a>
                         <a class="btn btn-danger"
