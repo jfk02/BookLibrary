@@ -46,15 +46,17 @@
                     <td class="text-center" th:text="${book.pages}"></td>
                     <td class="text-center" th:text="${book.publishedYear}"></td>
                     <td class="text-center" th:text="${book.isbn}"></td>
-                    <td class="text-center">
-                        <a class="btn btn-primary"
+                    <td>
+                        <div class="d-flex justify-content-evenly">
+                        <a class="icon-link link-primary"
                            th:href="@{/update-book/{id}(id=${book.id})}">
-                            Upraviť
+                            <i class="bi bi-pen" style="font-size: 1 rem;"></i>
                         </a>
-                        <a class="btn btn-danger"
+                            <a class="icon-link link-danger"
                            th:href="@{/deleteBookWithId/{id}(id=${book.id})}">
-                            Vymazať
+                            <i class="bi bi-trash" style="font-size: 1 rem;"></i>
                         </a>
+                        </div>
                     </td>
                 </tbody>
             </table>

@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title th:replace="${title}">Page 1 Title</title>
     <link href="/webjars/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/bootstrap-icons/1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <th:block th:replace="${resources} ?: ~{}"></th:block>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-<div class="bg-image"
+
+<div class="bg-image bg-cover"
      style="background-image: url('/library_background.jpg'); width: 100vw; height: 100vh;">
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.8); width: 100vw; height: 100vh;">
-        <div class="container text-white">
+
+        <div class="container">
             <div th:insert="${nav} ?: ~{}">
                 Menu
             </div>
@@ -34,9 +36,9 @@
         <footer class="bg-dark bg-opacity-50 text-center fixed-bottom text-white" th:insert="${footer} ?: ~{}">
             <p>Footer</p>
         </footer>
-    </div>
+
 </div>
-<script src="/webjars/jquery/3.6.4/jquery.min.js"></script>
+
 <script src="/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
