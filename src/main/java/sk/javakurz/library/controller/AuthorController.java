@@ -35,7 +35,7 @@ public class AuthorController {
     public String addAuthor(Model model) {
         var newAuthorDto = new AuthorFormDataDto();
         newAuthorDto.setId((long) -1);
-        model.addAttribute("authorDto", newAuthorDto); //new FormAuthorDto());
+        model.addAttribute("authorDto", newAuthorDto);
         return "author-form";
     }
 

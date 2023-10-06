@@ -21,22 +21,26 @@
 </div>
 
 <div id="header-content">
-    Autor
+    Čitateľ
 </div>
 
 <div id="main-content">
     <div class="p-2 bg-dark bg-opacity-50 rounded">
         <form action="#"
-              th:action="@{/author-input-data}"
-              th:object="${authorDto}"
+              th:action="@{/patron-input-data}"
+              th:object="${patronDto}"
               method="post">
             <input th:field="*{id}" type="hidden"/>
             <div class="mb-3">
-                <label for="authorName" class="form-label">Meno autora</label>
-                <input type="text" th:field="*{name}" class="form-control" id="authorName">
+                <label for="patronName" class="form-label">Meno čitateľa</label>
+                <input type="text" th:field="*{name}" class="form-control" id="patronName">
+            </div>
+            <div class="mb-3">
+                <label for="patronAddress" class="form-label">Adresa bydliska</label>
+                <input type="text" th:field="*{address}" class="form-control" id="patronAddress">
             </div>
             <div class="text-center mb-3">
-                <button type="submit" class="btn btn-primary">Ulož autora</button>
+                <button type="submit" class="btn btn-primary">Ulož čitateľa</button>
             </div>
         </form>
     </div>

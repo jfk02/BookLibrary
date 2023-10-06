@@ -48,14 +48,14 @@
                     <td class="text-center" th:text="${book.isbn}"></td>
                     <td>
                         <div class="d-flex justify-content-evenly">
-                        <a class="icon-link link-primary"
-                           th:href="@{/update-book/{id}(id=${book.id})}">
-                            <i class="bi bi-pen" style="font-size: 1 rem;"></i>
-                        </a>
+                            <a class="icon-link link-primary"
+                               th:href="@{/update-book/{id}(id=${book.id})}">
+                                <i class="bi bi-pen" style="font-size: 1rem;"></i>
+                            </a>
                             <a class="icon-link link-danger"
-                           th:href="@{/deleteBookWithId/{id}(id=${book.id})}">
-                            <i class="bi bi-trash" style="font-size: 1 rem;"></i>
-                        </a>
+                               th:href="@{/deleteBookWithId/{id}(id=${book.id})}">
+                                <i class="bi bi-trash" style="font-size: 1rem;"></i>
+                            </a>
                         </div>
                     </td>
                 </tbody>
