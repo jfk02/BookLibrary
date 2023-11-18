@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="sk" data-bs-theme="dark" xmlns:th="http://www.thymeleaf.org"
-      th:fragment="main-fragment (title, resources, header, nav, libraryContent, footer)">
+      th:fragment="main-fragment (title, resources, header, libraryContent)">
 
 <head>
     <meta charset="UTF-8"/>
@@ -16,29 +16,27 @@
 <div class="bg-image bg-cover"
      style="background-image: url('/library_background.jpg'); width: 100vw; height: 100vh;">
 
-        <div class="container">
-            <div th:insert="${nav} ?: ~{}">
-                Menu
-            </div>
-
-            <h3 class="h-2 p-2 mb-1 mt-1 text-center bg-dark bg-opacity-50 rounded"
-                th:insert="${header} ?: ~{}">
-                Page 1
-            </h3>
-            <section>
-                <article th:insert="${libraryContent} ?: ~{}">
-                    <h1>Page 1</h1>
-                    <p>Main content of Page 1</p>
-                </article>
-            </section>
+    <div class="container">
+        <div th:replace="~{/fragments/library-fragments :: library-menu}">
+            Menu
         </div>
 
-        <footer class="bg-dark bg-opacity-50 text-center fixed-bottom text-white" th:insert="${footer} ?: ~{}">
-            <p>Footer</p>
-        </footer>
+        <h3 class="h-2 p-2 mb-1 mt-1 text-center bg-dark bg-opacity-50 rounded"
+            th:insert="${header} ?: ~{}">
+            Page 1
+        </h3>
+        <section>
+            <article th:insert="${libraryContent} ?: ~{}">
+                <h1>Page 1</h1>
+                <p>Main content of Page 1</p>
+            </article>
+        </section>
+    </div>
 
+    <footer class="bg-dark bg-opacity-50 text-center fixed-bottom text-white">
+        &copy; 2023 Ján Kavan
+    </footer>
 </div>
-
 <script src="/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

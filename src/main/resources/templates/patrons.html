@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <html lang="sk" xmlns:th="http://www.thymeleaf.org"
       th:replace="~{layouts/library-layout :: main-fragment(
-                                                ~{::title},
-                                                ~{:: #patrons-static-resources},
+                                                ~{::title},~{},
                                                 ~{:: #patrons-header},
-                                                ~{:: #patrons-nav},
-                                                ~{:: #patrons-main-content},
-                                                ~{:: #patrons-footer}
+                                                ~{:: #patrons-main-content}
                                                )}">
 <head>
-    <meta charset="UTF-8">
     <title>Zoznam čitateľov</title>
-    <th:block id="patrons-static-resources">
-    </th:block>
 </head>
 
 <body>
-<div id="patrons-nav" th:replace="~{/fragments/library-fragments :: library-menu}">
-    Menu
-</div>
-
 <div id="patrons-header">
     Zoznam registrovaných čitateľov
 </div>
@@ -47,7 +37,7 @@
                                 <i class="bi bi-pen" style="font-size: 1rem;"></i>
                             </a>
                             <a class="icon-link link-danger"
-                                th:href="@{/deletePatronWithId/{id}(id=${patron.id})}">
+                               th:href="@{/deletePatronWithId/{id}(id=${patron.id})}">
                                 <i class="bi bi-trash" style="font-size: 1rem;"></i>
                             </a>
                         </div>
@@ -58,9 +48,6 @@
     </div>
 </div>
 
-<div id="patrons-footer" th:replace="~{/fragments/library-fragments :: copyright}">
-    Footer
-</div>
 </body>
 
 </html>

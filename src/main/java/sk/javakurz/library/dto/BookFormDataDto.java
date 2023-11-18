@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookFormDataDto {
-    public Long id;
+    private Long id;
 
     @NotBlank(message = "Názov knihy je povinný.")
     @Size(min = 3, max = 50)

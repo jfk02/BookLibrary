@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <html lang="sk" xmlns:th="http://www.thymeleaf.org"
       th:replace="~{layouts/library-layout :: main-fragment(
-                                                ~{::title},
-                                                ~{:: #newbook-static-resources},
+                                                ~{::title},~{},
                                                 ~{:: #newbook-header},
-                                                ~{:: #newbook-nav},
-                                                ~{:: #newbook-main-content},
-                                                ~{:: #newbook-footer}
+                                                ~{:: #newbook-main-content}
                                                )}">
 <head>
-    <meta charset="UTF-8">
     <title>Pridaj knihu</title>
-    <th:block id="newbook-static-resources">
-    </th:block>
 </head>
 
 <body>
-<div id="newbook-nav" th:replace="~{/fragments/library-fragments :: library-menu}">
-    Menu
-</div>
-
 <div id="newbook-header">
     Nová kniha
 </div>
@@ -74,9 +64,6 @@
     </div>
 </div>
 
-<div id="newbook-footer" th:replace="~{/fragments/library-fragments :: copyright}">
-    Footer
-</div>
 </body>
 
 </html>

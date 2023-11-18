@@ -15,4 +15,4 @@ public class AuthorFormDataDto {
     @NotBlank(message = "Meno autora je povinný údaj.")
     @Size(min = 3, max = 50)
     private String name;
-};
+}

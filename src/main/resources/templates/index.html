@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html lang="sk" xmlns:th="http://www.thymeleaf.org"
       th:replace="~{layouts/library-layout :: main-fragment(
-                                                ~{::title},
-                                                ~{:: #main-static-resources},
+                                                ~{::title},~{},
                                                 ~{:: #main-header},
-                                                ~{:: #main-nav},
-                                                ~{:: #main-main-content},
-                                                ~{:: #main-footer}
+                                                ~{:: #main-main-content}
                                                )}">
 <head>
-    <meta charset="UTF-8">
     <title>Knižnica</title>
-    <th:block id="main-static-resources">
-    </th:block>
 </head>
 
 <body>
-<div id="main-nav" th:replace="~{/fragments/library-fragments :: library-menu}">
-    Menu
-</div>
 
 <div id="main-header">
 Úvod
@@ -36,8 +27,5 @@
 
 </div>
 
-<div id="main-footer" th:replace="~{/fragments/library-fragments :: copyright}">
-    Footer
-</div>
 </body>
 </html>
