@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CheckoutFormDto{
+public class CheckoutFormDataDto {
         private Long id;
 
         @NotNull

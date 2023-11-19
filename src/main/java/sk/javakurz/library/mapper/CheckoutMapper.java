@@ -1,18 +1,25 @@
 package sk.javakurz.library.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import sk.javakurz.library.dto.CheckoutDto;
+import sk.javakurz.library.dto.CheckoutFormDataDto;
 import sk.javakurz.library.entity.Checkout;
-
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface CheckoutMapper {
-    CheckoutDto checkoutToCheckoutDto(Checkout checkout);
+public abstract class CheckoutMapper {
+    public abstract CheckoutDto checkoutToCheckoutDto(Checkout checkout);
 
-    List<CheckoutDto> checkoutToCheckoutDto(Iterable<Checkout> checkout);
+    public abstract List<CheckoutDto> checkoutToCheckoutDto(Iterable<Checkout> checkout);
 
-    Checkout checkoutDtoToCheckout(CheckoutDto checkoutDto);
+    public abstract Checkout checkoutDtoToCheckout(CheckoutDto checkoutDto);
 
-    List<Checkout> checkoutDtoToCheckout(Iterable<CheckoutDto> checkoutDto);
+    @Mapping(target="id", ignore = true)
+    public abstract Checkout newCheckoutDtoToCheckout(CheckoutFormDataDto checkoutFormDataDto);
+
+    @Mapping(target="id", ignore = true)
+    public abstract void updateCheckoutFromFormCheckoutDto(@MappingTarget Checkout checkout, CheckoutFormDataDto checkoutFormDataDto);
+
 }

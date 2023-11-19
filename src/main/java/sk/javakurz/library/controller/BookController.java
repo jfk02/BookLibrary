@@ -53,7 +53,6 @@ public class BookController {
         return "book-form";
     }
 
-
     @PostMapping("/book-input-data")
     public String newBook(@Valid @ModelAttribute("bookDto") BookFormDataDto bookFormDataDto, BindingResult bindingResult) {
         String result;
