@@ -16,8 +16,12 @@ import sk.javakurz.library.service.AuthorService;
 @Controller
 public class AuthorController {
 
+    private final AuthorService authorService;
+
     @Autowired
-    private AuthorService authorService;
+    public AuthorController(AuthorService authorService) {
+        this.authorService = authorService;
+    }
 
     @GetMapping("/all-authors")
     public String showAllAuthors(Model model) {

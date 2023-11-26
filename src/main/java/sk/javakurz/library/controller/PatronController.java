@@ -16,8 +16,12 @@ import sk.javakurz.library.service.PatronService;
 @Controller
 public class PatronController {
 
+    private final PatronService patronService;
+
     @Autowired
-    private PatronService patronService;
+    public PatronController(PatronService patronService) {
+        this.patronService = patronService;
+    }
 
     @GetMapping("/all-patrons")
     public String showAllPatrons(Model model) {
